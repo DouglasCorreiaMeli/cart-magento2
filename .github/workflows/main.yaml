@@ -74,6 +74,6 @@ jobs:
         
       - name: Run Test
         id: unit-test
-        run: magento/vendor/phpunit/phpunit/phpunit magento2/app/code/MercadoPago/
+        run: magento2/vendor/phpunit/phpunit/phpunit magento2/app/code/MercadoPago/
         
 
