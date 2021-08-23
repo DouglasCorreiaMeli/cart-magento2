@@ -71,4 +71,9 @@ jobs:
       - name: Install MP Plugin
         id: install-plugin
         run: mv src/* magento2/app/code
+        
+      - name: Run Test
+        id: unit-test
+        run: magento/vendor/phpunit/phpunit/phpunit magento2/app/code/MercadoPago/
+        
 
