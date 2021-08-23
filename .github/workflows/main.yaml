@@ -71,3 +71,4 @@ jobs:
       - name: Install MP Plugin
         id: install-plugin
         run: mv src/* magento2/app/code
+
