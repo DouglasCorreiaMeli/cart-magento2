@@ -5,7 +5,7 @@ on: [pull_request]
 jobs:
   magento2-unit-tests:
     runs-on: ubuntu-latest
-    
+
     services:
       mysql:
         image: mysql:latest
@@ -18,7 +18,7 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.3'
+          php-version: "7.3"
           extensions: curl, dom, intl, json, openssl
           coverage: xdebug
 
@@ -67,3 +67,7 @@ jobs:
       - name: Print app/code Folder Structure
         id: ls-appcode-mg2
         run: ls -la magento2/app/code
+
+      - name: Install MP Plugin
+        id: install-plugin
+        run: mv src/* magento2/app/code
