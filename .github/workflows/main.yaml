@@ -63,6 +63,6 @@ jobs:
         
       - name: Run Test
         id: unit-test
-        run: magento2/vendor/phpunit/phpunit/phpunit --whitelist magento2/app/code/MercadoPago/Test  --coverage-text magento2/app/code/MercadoPago/Test
+        run: magento2/vendor/phpunit/phpunit/phpunit --whitelist magento2/app/code/MercadoPago/Core  --coverage-text magento2/app/code/MercadoPago/Test
         
         
