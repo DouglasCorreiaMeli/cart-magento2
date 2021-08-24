@@ -63,16 +63,15 @@ jobs:
         
       - name: Run Test
         id: unit-test
-        run: magento2/vendor/phpunit/phpunit/phpunit --colors --columns max --coverage-text=test_coverage magento2/app/code/MercadoPago/
+        run: magento2/vendor/phpunit/phpunit/phpunit --whitelist magento2/app/code/MercadoPago/Core  --colors --columns max --coverage-text=test_coverage magento2/app/code/MercadoPago/Test
         
         
       - name: Show Coverage
         id: cov
-        run: ls -la magento2/app/code/MercadoPago/
-        
+        run: ls -la magento2/app/code/MercadoPago/Test/Unit
         
       - name: Show Coverage 2
         id: cov2
-        run: ls -la magento2/app/code/MercadoPago/Test
+        run: ls -la magento2/app/code/MercadoPago/Test/Unit/Block
         
 
