@@ -63,6 +63,6 @@ jobs:
         
       - name: Run Test
         id: unit-test
-        run: magento2/vendor/phpunit/phpunit/phpunit --verbose --coverage-text
+        run: magento2/vendor/phpunit/phpunit/phpunit --verbose --coverage-text --colors=always magento2/app/code/MarcadoPago/Test
         
         
