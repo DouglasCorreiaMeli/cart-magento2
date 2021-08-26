@@ -27,7 +27,10 @@ if ($coverage < $percentage) {
     echo "\033[01;31m -> Pull Request Rejected \033[0m";
     // when we want to fail the pull request, just uncomment the line below
     // exit(1);
+    //and remove else block
+}else {
+    echo 'Code coverage is ' . $coverage;
+    echo "\033[01;32m -> Pull Request OK \033[0m";
 }
 
-echo 'Code coverage is ' . $coverage;
-echo "\033[01;32m -> Pull Request OK \033[0m";
+
