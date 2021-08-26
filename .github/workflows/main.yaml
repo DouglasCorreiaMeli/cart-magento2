@@ -67,7 +67,7 @@ jobs:
         
       - name: Pull Request Test Coverage
         id: pr-coverage
-        run: php coverage-checker.php clover.xml
+        run: php magento2/app/code/MercadoPago/Test/coverage-checker.php clover.xml
         
 
 
