@@ -27,7 +27,7 @@ class InfoTest extends TestCase
 
     public function testDummy()
     {
-        $this->assertTrue(true);
+        $this->assertTrue(false);
     }
 
     public function testInfoInstance()
