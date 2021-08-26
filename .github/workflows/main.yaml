@@ -61,9 +61,14 @@ jobs:
         id: install-plugin
         run: mv src/* magento2/app/code
         
-      - name: Run Test
-        id: unit-test
+      - name: Pull Request Test Coverage
+        id: pr-unit-test
         run: magento2/vendor/phpunit/phpunit/phpunit --colors=always --whitelist magento2/app/code/MercadoPago/Core --coverage-text  magento2/app/code/MercadoPago/Test
+        
+      - name: Codebase Test Coverage
+        id: base-unit-test
+        run: bash bin/codebase-tests.sh
+        
 
 
 
