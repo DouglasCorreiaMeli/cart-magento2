@@ -61,13 +61,13 @@ jobs:
         id: install-plugin
         run: mv src/* magento2/app/code
         
-      - name: Pull Request Test Coverage
-        id: pr-unit-test
+      - name: Run Unit Test
+        id: unit-test
         run: magento2/vendor/phpunit/phpunit/phpunit --colors=always --whitelist magento2/app/code/MercadoPago/Core --coverage-clover clover.xml  magento2/app/code/MercadoPago/Test
         
-      - name: Codebase Test Coverage
-        id: base-unit-test
-        run: bash bin/codebase-tests.sh
+      - name: Pull Request Test Coverage
+        id: pr-coverage
+        run: php coverage-checker.php clover.xml
         
 
 
