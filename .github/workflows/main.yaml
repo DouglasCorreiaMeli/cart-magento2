@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Fetch branch develop
-        run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/develop
+        run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
       
       - name: Create diff file 
         run:  git diff origin/develop HEAD --output=diff.patch
