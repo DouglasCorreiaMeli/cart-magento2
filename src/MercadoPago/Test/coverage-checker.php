@@ -24,7 +24,7 @@ $coverage = ($checkedElements / $totalElements) * 100;
 
 try {
     $coverageFile = fopen('coverage.txt','a');
-    fwrite($coverageFile, $coverage .PHP_EOL);
+    fwrite($coverageFile, round($coverage,2) .PHP_EOL);
 } catch (Exception $e) {
     echo 'Exceção capturada: ',  $e->getMessage(), "\n";
 }
