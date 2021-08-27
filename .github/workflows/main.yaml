@@ -28,9 +28,6 @@ jobs:
       
       - name: Create diff file 
         run:  git diff origin/develop HEAD --output=diff.patch
-      
-      - name: Show diff file
-        run: ls -la
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -62,19 +59,25 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
 
-      #- name: Install & Build Magento
-        #id: build-magento
-        #run: bash bin/install-mg2.sh
+      - name: Install & Build Magento
+        id: build-magento
+        run: bash bin/install-mg2.sh
+        
+      - name: install verifier
+        run: cd magento2 && composer require tomzx/php-code-coverage-verifier
 
 
-      #- name: Install MP Plugin
-        #id: install-plugin
-        #run: mv src/* magento2/app/code
+      - name: Install MP Plugin
+        id: install-plugin
+        run: mv src/* magento2/app/code
         
-      #- name: Run Unit Test
-        #id: unit-test
-        #run: magento2/vendor/phpunit/phpunit/phpunit --colors=always --whitelist magento2/app/code/MercadoPago/Core --coverage-clover clover.xml --coverage-text  magento2/app/code/MercadoPago/Test
+      - name: Run Unit Test
+        id: unit-test
+        run: magento2/vendor/phpunit/phpunit/phpunit --colors=always --whitelist magento2/app/code/MercadoPago/Core --coverage-clover clover.xml --coverage-text  magento2/app/code/MercadoPago/Test
         
-      #- name: Pull Request Test Coverage
-        #id: pr-coverage
-        #run: php magento2/app/code/MercadoPago/Test/coverage-checker.php clover.xml 80
+      - name: Pull Request Test Coverage
+        id: pr-coverage
+        run: php magento2/app/code/MercadoPago/Test/coverage-checker.php clover.xml 80
+        
+      - name: PR Coverage
+        run: php magento2/vendor/bin/php-code-coverage-verifier verify clover.xml diff.patch
