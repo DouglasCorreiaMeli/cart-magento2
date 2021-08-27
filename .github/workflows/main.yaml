@@ -20,16 +20,6 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    
-      - name: branch
-        run: git branch
-        
-      - name: create diff
-        run: git diff develop --output=diff-file.patch
-        
-      - name: show diff
-        run: cat diff-file.patch
-        
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -61,7 +51,9 @@ jobs:
           # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-        
+      
+      - name: GIT TEST
+        run: git diff origin/develop
 
       #- name: Install & Build Magento
         #id: build-magento
@@ -79,9 +71,3 @@ jobs:
       #- name: Pull Request Test Coverage
         #id: pr-coverage
         #run: php magento2/app/code/MercadoPago/Test/coverage-checker.php clover.xml 80
-        
-
-
-
-        
-        
