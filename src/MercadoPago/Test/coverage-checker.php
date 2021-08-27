@@ -22,6 +22,11 @@ foreach ($metrics as $metric) {
 
 $coverage = ($checkedElements / $totalElements) * 100;
 
-$coverageFile = fopen('coverage.txt','a');
-fwrite($coverageFile, $coverage .PHP_EOL);
+try {
+    $coverageFile = fopen('coverage.txt','a');
+    fwrite($coverageFile, $coverage .PHP_EOL);
+} catch (Exception $e) {
+    echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+}
+
 fclose($coverageFile);
