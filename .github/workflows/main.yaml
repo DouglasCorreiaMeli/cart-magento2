@@ -57,7 +57,7 @@ jobs:
         run: git branch
         
       - name: create diff
-        run: git diff origin/feature/ppsm-206  origin/develop --output=diff-file.patch
+        run: git diff feature/ppsm-206  develop --output=diff-file.patch
         
       - name: show diff
         run: cat diff-file.patch
