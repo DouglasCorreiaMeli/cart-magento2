@@ -22,15 +22,6 @@ foreach ($metrics as $metric) {
 
 $coverage = ($checkedElements / $totalElements) * 100;
 
-if ($coverage < $percentage) {
-    echo 'Code coverage is ' . round($coverage, 2) . '%, which is below the accepted ' . $percentage . '%';
-    echo "\033[01;31m -> Pull Request Rejected \033[0m";
-    // when we want to fail the pull request, just uncomment the line below
-    // exit(1);
-    //and remove else block
-}else {
-    echo 'Code coverage is ' . $coverage;
-    echo "\033[01;32m -> Pull Request OK \033[0m";
-}
-
-
+$coverageFile = fopen('coverage.txt','a');
+fwrite($coverageFile, $coverage .PHP_EOL);
+fclose($coverageFile);
