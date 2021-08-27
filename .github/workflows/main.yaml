@@ -30,7 +30,7 @@ jobs:
         run:  git diff origin/develop HEAD --output=diff.patch
       
       - name: Show diff file
-        run: cat diff.patch
+        run: ls -la
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
