@@ -52,14 +52,16 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
       
-      - name: Show project
-        run: ls -la
+      
+      - name: branch
+        run: git branch
         
-      - name: check git
-        run: git status
+      - name: create diff
+        run: git diff origin/feature/ppsm-206  origin/develop --output=diff-file.patch
         
-      - name: check git
-        run: git log -1
+      - name: show diff
+        run: cat diff-file.patch
+        
 
       #- name: Install & Build Magento
         #id: build-magento
