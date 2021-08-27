@@ -55,15 +55,33 @@ jobs:
       - name: Install & Build Magento
         id: build-magento
         run: bash bin/install-mg2.sh
+        
+      - name: Install develop MP Plugin
+        run: bash bin/install-plugin-develop.sh
+        
+      - name: Get Clover.xml from develop
+        id: develop-unit-test
+        run: magento2/vendor/phpunit/phpunit/phpunit --colors=always --whitelist magento2/app/code/MercadoPago/Core --coverage-clover clover.xml --coverage-text  magento2/app/code/MercadoPago/Test
+        
 
-      - name: Install MP Plugin
+      - name: Get coverage from develop
+        id: develop-coverage
+        run: php magento2/app/code/MercadoPago/Test/coverage-checker.php clover.xml 80
+
+      - name: Install HEAD MP Plugin
         id: install-plugin
-        run: mv src/* magento2/app/code
+        run: rm -rf magento2/app/code/MercadoPago && mv src/* magento2/app/code
 
       - name: Run Unit Test
         id: unit-test
         run: magento2/vendor/phpunit/phpunit/phpunit --colors=always --whitelist magento2/app/code/MercadoPago/Core --coverage-clover clover.xml --coverage-text  magento2/app/code/MercadoPago/Test
 
-      - name: Pull Request Test Coverage
+      - name: Get coverage from HEAD
         id: pr-coverage
         run: php magento2/app/code/MercadoPago/Test/coverage-checker.php clover.xml 80
+        
+      - name: Final Step
+        run: php magento2/app/code/MercadoPago/Test/coverage-result.php
+        
+
+    
