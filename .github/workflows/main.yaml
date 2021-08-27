@@ -53,7 +53,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       
       - name: GIT TEST
-        run: git diff origin/develop
+        run: git diff origin/develop HEAD
 
       #- name: Install & Build Magento
         #id: build-magento
