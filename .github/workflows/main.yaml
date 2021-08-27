@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+     # - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+      - run: git diff origin/develop HEAD
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -51,9 +53,7 @@ jobs:
           # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-      
-      - name: GIT TEST
-        run: git diff origin/develop HEAD
+
 
       #- name: Install & Build Magento
         #id: build-magento
