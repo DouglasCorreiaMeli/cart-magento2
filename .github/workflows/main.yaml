@@ -54,6 +54,12 @@ jobs:
       
       - name: Show project
         run: ls -la
+        
+      - name: check git
+        run: git status
+        
+      - name: check git
+        run: git log -1
 
       #- name: Install & Build Magento
         #id: build-magento
