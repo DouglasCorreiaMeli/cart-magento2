@@ -22,8 +22,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-      - run: git diff origin/develop HEAD
+        
+      - name: Fetch branch develop
+        run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/develop
+      
+      - name: Create diff file 
+        run:  git diff origin/develop HEAD --output=diff.patch
+      
+      - name: Show diff file
+        run: cat diff.patch
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
