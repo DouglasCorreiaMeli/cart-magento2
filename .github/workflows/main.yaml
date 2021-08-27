@@ -57,7 +57,7 @@ jobs:
         run: git branch
         
       - name: create diff
-        run: git diff pull/1/merge develop --output=diff-file.patch
+        run: git diff develop --output=diff-file.patch
         
       - name: show diff
         run: cat diff-file.patch
