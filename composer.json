@@ -31,7 +31,6 @@
         "sjparkinson/static-review": "~4.1",
         "fabpot/php-cs-fixer": "~1.2",
         "lusitanian/oauth": "~0.3 <=0.7.0",
-        "tomzx/php-code-coverage-verifier"
     },
     "autoload": {
         "psr-4": {
