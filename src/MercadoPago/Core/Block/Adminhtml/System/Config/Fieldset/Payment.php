@@ -83,7 +83,7 @@ class Payment
 
         //check is bank transfer
         if ($this->hidePix($paymentId, $siteId)) {
-            return "";
+            return ""
         }
 
         return parent::render($element);
